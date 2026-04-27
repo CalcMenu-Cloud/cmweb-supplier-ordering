@@ -1,0 +1,9 @@
+HOGASHOP TEST ACCOUNT CALCMENU	
+Account: 	maenggist
+Supplier: 	Mundo
+password	gkf_cex2puj!TMX@zxh
+
+
+UserID: calcmenu	- LOGIN account
+App secret: nnFGBzzQMr4DiDh	
+URL according to instructions point 2: https://hogashop.ch/grant-access/calcmenu	
