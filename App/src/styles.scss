@@ -1,0 +1,205 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$egs_pimupdate-app-primary: mat.define-palette(mat.$indigo-palette);
+$egs_pimupdate-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$egs_pimupdate-app-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$egs_pimupdate-app-theme: mat.define-light-theme((
+  color: (
+    primary: $egs_pimupdate-app-primary,
+    accent: $egs_pimupdate-app-accent,
+    warn: $egs_pimupdate-app-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($egs_pimupdate-app-theme);
+
+/* You can add global styles to this file, and also import other style files */
+// .preference {
+//     display: flex;
+//     justify-content: space-between;
+//     width: 20%;
+//     margin: .10rem;
+// }
+
+// .mat-radio-button.mat-accent .mat-radio-inner-circle {
+//   background-color: rgb(241, 15, 15);
+// }
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i");
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+body {
+  // background: #fefefe !important;
+  background: #f5f5f5 !important;
+ 
+}
+
+.card {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgb(1 41 112 / 10%);
+}
+
+.card-header span {
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Logo
+--------------------------------------------------------------*/
+
+.logo img {
+  max-height: 26px;
+  margin-right: 6px;
+}
+
+.logo span {
+  font-size: 26px;
+  font-weight: 700;
+  font-family: "Nunito", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Nav
+--------------------------------------------------------------*/
+
+.nav-pills > .nav-item > button {
+  color: #e52325;
+}
+.nav-pills > .nav-item > button:hover {
+  color: #ec5f62;
+}
+
+.nav-pills > .nav-item > .active {
+  background-color: #e52325 !important;
+}
+.nav-pills > .nav-item > .active:hover {
+  color: #fff;
+  background-color: #e52325 !important;
+}
+
+/*--------------------------------------------------------------
+# Table
+--------------------------------------------------------------*/
+
+.table-head {
+  background-color: rgba(0,0,0,.03);
+  border: 1px solid rgba(0,0,0,.125);
+}
+
+.table-head h6 {
+  margin: 0;
+  padding: 8px 0px;
+}
+
+.table-body {
+  border: 1px solid rgba(0,0,0,.125);
+}
+
+/*--------------------------------------------------------------
+# Radio Button
+--------------------------------------------------------------*/
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #e52325;
+}
+
+.mat-radio-outer-circle {
+  background-color: rgba(0,0,0,.03);
+  color: rgba(0,0,0,.125);
+}
+
+.mat-radio-button {
+  max-width: 20px;
+  max-height: 20px;
+}
+
+/*--------------------------------------------------------------
+# Checkbox
+--------------------------------------------------------------*/
+
+input[type=checkbox]:checked {
+  background-color: #e52325;
+  border-color: #e52325;
+}
+
+/*--------------------------------------------------------------
+# Remove Outline & Box Shadow
+--------------------------------------------------------------*/
+
+.btn:focus,
+.btn:active,
+input:focus {
+  border-color: #b0b0b0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/*--------------------------------------------------------------
+# Save Changes Button
+--------------------------------------------------------------*/
+
+.floating-btn {
+  right: 20px;
+  bottom: 20px;
+  position: fixed;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+// .btn-primary {
+//   background-color: #e52325 !important;
+//   border-color: #e52325 !important;
+// }
+
+// .btn-primary:hover,
+// .btn-primary:focus,
+// .btn-primary:active,
+// .btn-primary.active,
+// .open > .dropdown-toggle.btn-primary {
+//   // 52% to 45%
+//   background-color: #cd181b !important;
+//   border-color: #cd181b !important;
+// }
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+.footer {
+  padding: 20px 0;
+  font-size: 14px;
+  border-top: 1px solid #dedede;
+}
+
+.footer .copyright {
+  text-align: center;
+  color: #3d3d3d;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

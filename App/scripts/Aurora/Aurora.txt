@@ -1,0 +1,24 @@
+ALTER TABLE `egspim`.`egswbulkimportproductsv2` 
+CHANGE COLUMN `productid` `productid` VARCHAR(50) NULL DEFAULT NULL ,
+CHANGE COLUMN `baseunit` `baseunit` VARCHAR(50) NULL DEFAULT NULL ,
+CHANGE COLUMN `sellingunit` `sellingunit` VARCHAR(50) NULL DEFAULT NULL ,
+CHANGE COLUMN `baseprice` `baseprice` DECIMAL(10,2) NULL DEFAULT NULL ,
+CHANGE COLUMN `sellingprice` `sellingprice` DECIMAL(10,2) NULL DEFAULT NULL ,
+CHANGE COLUMN `basesellingquantity` `basesellingquantity` DECIMAL(10,2) NULL DEFAULT NULL ,
+CHANGE COLUMN `platform` `platform` VARCHAR(199) NULL DEFAULT NULL ;
+
+ALTER TABLE `egspim`.`egswbulkimportproductsv2` 
+ADD COLUMN `productid` VARCHAR(50) NULL AFTER `info_country_italian`,
+ADD COLUMN `baseunit` VARCHAR(50) NULL AFTER `productid`,
+ADD COLUMN `sellingunit` VARCHAR(50) NULL AFTER `baseunit`,
+ADD COLUMN `baseprice` DECIMAL(10,2) NULL AFTER `sellingunit`,
+ADD COLUMN `sellingprice` DECIMAL(10,2) NULL AFTER `baseprice`,
+ADD COLUMN `basesellingquantity` DECIMAL(10,2) NULL AFTER `sellingprice`,
+ADD COLUMN `platform` VARCHAR(99) NULL AFTER `basesellingquantity`,
+ADD COLUMN `isavailable` INT NULL AFTER `platform`,
+ADD COLUMN `imagesmurl` VARCHAR(105) NULL AFTER `isavailable`,
+ADD COLUMN `imagemdurl` VARCHAR(105) NULL AFTER `imagesmurl`;
+
+        ALTER TABLE `egspim`.`egswbulkimportmainv2` ADD COLUMN `interfacename` VARCHAR(250) NULL
+                    
+

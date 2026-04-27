@@ -1,0 +1,102 @@
+
+--drop function fn_EgswConvertAmount
+ALTER FUNCTION [dbo].[fn_GetPurchaseAmount] 
+(@Unit nvarchar(200) , @Quantity decimal, @ProductId int)
+
+RETURNS decimal
+--WITH ENCRYPTION						
+
+AS
+BEGIN
+
+--DECLARE @Unit nvarchar(200)='Kg'
+--DECLARE @Quantity decimal=12
+
+DECLARE @BaseUnit nvarchar(200)='St'
+DECLARE @SellingUnit nvarchar(200)='K'
+
+DECLARE @SellingPrice money=171.52
+DECLARE @basePrice money=2.68
+DECLARE @BSQty decimal(18,2)=64
+DECLARE @NetWeight decimal(18,2)=0.08
+
+DECLARE @FinalAmount int=0
+
+select 
+
+ @BaseUnit=baseunit
+,@SellingUnit=sellingunit
+,@BSQty=basesellingquantity
+,@NetWeight=netweight
+from egswlisteorderinfo where productid=@ProductId
+
+
+	
+if @Unit=@BaseUnit
+BEGIN
+
+	  if @Quantity<@BSQty
+	  begin
+		set @FinalAmount= 1
+	  end
+	  else
+	  begin
+			--select	CEILING( @Quantity/@BSQty),@Quantity/@BSQty Amount
+			set @FinalAmount=	CEILING(@Quantity/@BSQty) 
+	  end
+
+
+END
+
+else if @Unit=@SellingUnit
+BEGIN
+
+	 if @Quantity<1
+		  begin
+			set @FinalAmount= 1 
+		  end
+		  else
+		  begin
+			--select	CEILING(@Quantity),@Quantity Amount
+				set @FinalAmount=	CEILING(@Quantity) 
+		  end
+	
+	
+END
+
+else if @Unit in ('Kg','kilogramme','kilogrammes', 'kilograme' ,'kilogrames', 'kilo', 'kilos', 'kilogram', 'kilograms' ,'kgm', 'kg', 'kgs', 'Kilogramm', 'Kilogramms')
+BEGIN
+
+	  if @Quantity< @NetWeight
+	  begin
+	  	set @FinalAmount= 1 
+	  end
+	  else
+	  begin
+		--select @Quantity/@NetWeight,@Quantity/@NetWeight,@BSQty
+
+		if @Quantity/@NetWeight< @BSQty
+		begin
+			set @FinalAmount= 1  
+		end
+		else
+		begin
+			--select (@Quantity/@NetWeight) QtyNetweight,(@Quantity/@NetWeight)/@BSQty Amount,@Quantity Quantity,@NetWeight Netweight,@BSQty SellingQty
+				set @FinalAmount= CEILING((@Quantity/@NetWeight)/@BSQty) 
+		end
+
+	  end
+
+
+END
+
+else
+begin
+	set @FinalAmount= 1
+end
+
+
+
+return @FinalAmount
+END
+

@@ -1,0 +1,34 @@
+
+ALTER PROCEDURE [dbo].[setSNUserSession]
+ @SupplierType int
+,@ClientId int null
+,@Codeuser int null
+,@DepartmentId int
+,@SesssionID nvarchar(max)
+,@RefreshToken nvarchar(max)
+
+as
+
+INSERT INTO egswSNSession
+(
+ SupplierType
+,ClientId
+,CodeUser
+,DepartmentId
+,SesssionID
+,RefreshToken
+,DateCreated
+,ExpiredDate
+,Status)
+
+select  
+ SupplierType=@SupplierType
+ ,ClientCode=isnull(@ClientId,-1)
+ ,CodeUser=isnull(@Codeuser,-1)
+,DepartmentId=@DepartmentId
+,SesssionID=@SesssionID
+,RefreshToken=@RefreshToken
+,DateCreated=GETDATE()
+,ExpiredDate= DATEADD(day, 1, GETDATE())
+,Status=1
+

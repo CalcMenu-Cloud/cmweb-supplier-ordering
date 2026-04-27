@@ -1,0 +1,10 @@
+
+
+ALTER PROCEDURE [dbo].[setSNUserTokenWithId]
+ @SesssionID nvarchar(max)
+,@RefreshToken nvarchar(max)
+,@Codeuser int
+as
+update s set RefreshToken=@RefreshToken from egswSNSession s
+where SesssionID=@SesssionID and codeuser=@Codeuser
+

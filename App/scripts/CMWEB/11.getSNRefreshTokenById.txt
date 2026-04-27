@@ -1,0 +1,10 @@
+
+ALTER PROCEDURE [dbo].[getSNRefreshTokenById]
+  @id int
+ ,@RefreshToken nvarchar(max) out
+as
+select 
+@RefreshToken=RefreshToken
+
+from egswSNSession s
+where id=@id

@@ -1,0 +1,22 @@
+
+ALTER PROCEDURE [dbo].[ValidateSNUserLogin]
+ @username nvarchar(200)
+ ,@password nvarchar(200)
+ ,@IsValidLogin bit out
+ ,@CodeUser int out
+ as
+ 
+DECLARE @EncryptedPassword nvarchar(250)
+select @EncryptedPassword=dbo.EGSEncrypt(trim(@password))
+DECLARE @ICodeUser int
+
+select top 1 @ICodeUser=code from EgswUser where Username =trim(@username) and Password=@EncryptedPassword
+set @CodeUser=@ICodeUser
+if @ICodeUser is not null
+	begin
+		set @IsValidLogin= 1
+	end
+	else
+	begin
+			set @IsValidLogin=0
+	end

@@ -1,0 +1,62 @@
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Order Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <!-- Supplier Details -->
+        <div class="card">
+          <div class="card-header">
+            Supplier Details
+          </div>
+          <div class="card-body">
+            <!-- Display supplier information -->
+            <p><strong>Name:</strong> {{ data.parts[0].supplier.name }}</p>
+            <p><strong>Address:</strong> {{ data.parts[0].supplier.street }}, {{ data.parts[0].supplier.zip }}, {{ data.parts[0].supplier.city }}</p>
+            <p><strong>Contact:</strong> {{ data.parts[0].supplier.contactingPerson.firstName }} {{ data.parts[0].supplier.contactingPerson.lastName }}</p>
+            <p><strong>Email:</strong> {{ data.parts[0].supplier.emailInfo }}</p>
+            <p><strong>Phone:</strong> {{ data.parts[0].supplier.phone }}</p>
+          </div>
+        </div>
+  
+        <!-- Customer Details -->
+        <div class="card mt-3">
+          <div class="card-header">
+            Customer Details
+          </div>
+          <div class="card-body">
+            <!-- Display customer information -->
+            <p><strong>Name:</strong> {{ data.customer.name }}</p>
+            <p><strong>Email:</strong> {{ data.customer.email }}</p>
+            <p><strong>Address:</strong> {{ data.customer.street }}, {{ data.customer.zip }}, {{ data.customer.city }}</p>
+            <p><strong>Contact:</strong> {{ data.customer.contactingPerson.firstName }} {{ data.customer.contactingPerson.lastName }}</p>
+            <p><strong>Phone:</strong> {{ data.customer.phone }}</p>
+          </div>
+        </div>
+  
+        <!-- Order Totals -->
+        <div class="card mt-3">
+          <div class="card-header">
+            Order Totals
+          </div>
+          <div class="card-body">
+            <!-- Display order totals -->
+            <p><strong>Total:</strong> {{ data.total }}</p>
+            <p><strong>Grand Total:</strong> {{ data.grandTotal }}</p>
+            <p><strong>Delivery Fee:</strong> {{ data.deliveryFee }}</p>
+            <p><strong>Number of Products:</strong> {{ data.countOfProducts }}</p>
+          </div>
+        </div>
+      </div>
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,22 @@
+
+ALTER PROCEDURE [dbo].[getSNUserSession]
+ @SesssionID nvarchar(max)
+as
+select 
+ s.Id
+,s.SupplierType
+,s.ClientId
+,s.CodeUser
+,s.DepartmentId
+,s.SesssionID
+,s.RefreshToken
+,s.DateCreated
+,s.ModifiedDate
+,s.ExpiredDate
+,s.Status
+,u.FullName
+,u.email
+from egswSNSession s
+inner join egswuser u on u.code=s.codeuser
+where SesssionID=@SesssionID
+

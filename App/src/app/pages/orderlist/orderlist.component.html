@@ -1,0 +1,27 @@
+<h2>Shopping Basket List</h2>
+<div class="table-responsive" >
+  <table class="table table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Date Created</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Loop through the orders array using *ngFor directive -->
+      <tr *ngFor="let snorder of orderlist">
+        <td>{{ snorder.id }}</td>
+        <td>{{ snorder.name }}</td>
+        <td>{{ snorder.dateCreated }}</td>
+        <td>{{ snorder.status }}</td>
+        <td>
+          <button type="button" class="btn btn-primary px-4 me-2" (click)=" ViewOrder(snorder.id)" >View</button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

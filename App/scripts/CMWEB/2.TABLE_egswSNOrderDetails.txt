@@ -1,0 +1,33 @@
+
+CREATE TABLE [dbo].[egswSNOrderDetails](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[OrderId] [int] NULL,
+	[Codeliste] [int] NULL,
+	[Number] [nvarchar](100) NULL,
+	[Name] [nvarchar](250) NULL,
+	[Supplier] [nvarchar](250) NULL,
+	[Category] [nvarchar](250) NULL,
+	[Quantity] [int] NULL,
+	[Unit] [nvarchar](50) NULL,
+	[Price] [decimal](18, 2) NULL,
+	[DeliveryDate] [datetime] NULL,
+	[BasePrice] [decimal](18, 2) NULL,
+	[BaseUnit] [nvarchar](50) NULL,
+	[SellingPrice] [decimal](18, 2) NULL,
+	[SellingUnit] [nvarchar](50) NULL,
+	[Ratio1] [decimal](18, 2) NULL,
+	[ProductId] [int] NULL,
+	[PicturePath] [nvarchar](1000) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[egswSNOrderDetails]  WITH CHECK ADD FOREIGN KEY([OrderId])
+REFERENCES [dbo].[egswSNOrder] ([Id])
+ON DELETE CASCADE
+GO
+
+

@@ -1,0 +1,14 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Adjust as needed */
+    z-index: 1000; /* Ensure the header appears above other content */
+    /* Additional styling for your header */
+  }
+  
+  /* Add padding to the body to prevent content from being obscured by the fixed header */
+  body {
+    padding-top: 60px; /* Adjust according to the height of your header */
+  }

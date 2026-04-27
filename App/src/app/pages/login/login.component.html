@@ -1,0 +1,29 @@
+<div class="container login-container">
+  <div class="card login-card">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-4">Login</h2>
+      <form >
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text"   class="form-control" id="username" placeholder="Enter username" required [(ngModel)]="loginInfo.username" >
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" value="Foodservice_CH" placeholder="Enter password" required [(ngModel)]="loginInfo.password" >
+        </div>
+        <div class="text-center mt-3">
+          <button type="submit" class="btn btn-primary btn-block" (click)="Login()" >Login</button>
+        </div>
+   
+      
+        <!-- Additional button for Google account login -->
+        <!-- <div class="text-center mt-3">
+          <button type="button"  class="btn btn-primary btn-block" (click)="openLoginPopup()">Login with Hogashop</button>
+        </div> -->
+
+      </form>
+    </div>
+  </div>
+</div>
+
+

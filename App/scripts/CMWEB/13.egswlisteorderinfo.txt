@@ -1,0 +1,23 @@
+
+CREATE TABLE [dbo].[egswlisteorderinfo](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[codeliste] [int] NULL,
+	[productid] [int] NULL,
+	[baseunit] [nvarchar](70) NULL,
+	[sellingunit] [nvarchar](70) NULL,
+	[baseprice] [money] NULL,
+	[sellingprice] [money] NULL,
+	[basesellingquantity] [float] NULL,
+	[netweight] [float] NULL,
+	[isavailable] [smallint] NULL,
+	[imagesmurl] [nvarchar](1000) NULL,
+	[imagemdurl] [nvarchar](1000) NULL,
+	[platform] [nvarchar](60) NULL,
+ CONSTRAINT [PK_egswlisteorderinfo] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+

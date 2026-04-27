@@ -1,0 +1,155 @@
+<div class="container"  *ngIf="order" style="min-width: 870px;">
+
+
+  <!-- Left Arrow Button -->
+  <button class="btn transparent-button" style="position: fixed; left: 10px; top: 50%; transform: translateY(-50%);" >
+   &lt;
+</button>
+
+<!-- Right Arrow Button -->
+<button class="btn transparent-button" style="position: fixed; right: 10px; top: 50%; transform: translateY(-50%);" >
+&gt;
+</button>
+
+
+    <!-- Order Details -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h2>Shopping basket details</h2>
+      </div>
+      <div class="card-body">
+        <p style="margin-bottom: 3px;"><strong>ID:</strong> {{ order.id }}</p>
+        <p style="margin-bottom: 3px;"><strong>Name:</strong> {{ order.name }}</p>
+        <p style="margin-bottom: 3px;"><strong>Date Created:</strong> {{ order.dateCreated| date }}</p>
+        <p><strong>Destination:</strong> The selected product will be sent to the Hogashop webshop</p>
+        <!-- Add other order details here -->
+      </div>
+    </div>
+
+        <!-- Order Details -->
+        <div class="card mb-4" *ngIf="loadingHogashopInfo">
+        
+          <div class="card-body">
+            <p style="margin-bottom: 3px;">Loading hogashop information...</p>
+            <!-- Add other order details here -->
+          </div>
+        </div>
+
+        <div class="card mb-4" *ngIf="!isConnectedToHogashop && !loadingHogashopInfo" >
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <p style="margin-bottom: 3px; margin-right: auto;color: mediumvioletred;">Not connected to hogashop</p>
+            <button class="btn btn me-2 hogashopbutton" (click)="openLoginPopup()" style="min-width: 136.5px; ">Connect to Hogashop</button>
+            <button class="btn btn me-2 hogashopbutton" (click)="openLoginPopupSaviva()" style="min-width: 136.5px; ">Connect to Saviva</button>
+            <!-- Add other order details here -->
+          </div>
+        </div>
+
+        <!-- Order Details -->
+        <div class="card mb-4" *ngIf="isshowdepartment">
+        
+          <div class="card-body">
+          <p style="margin-bottom: 3px;" class="hgconnected"><strong>Connected to Hogashop</strong><br>
+            <p style="margin-bottom: 3px;"><strong>Department :</strong>{{department.items[0].name}} ({{department.items[0].id}})</p>
+            <p style="margin-bottom: 3px;"><strong>Address :</strong>{{department.items[0].street}}, {{department.items[0].zip}}</p>
+            <!-- Add other order details here -->
+          </div>
+        </div>
+  
+    <!-- Order Items -->
+    <div class="card"  >
+   
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Base Price</th>
+              <th>Selling Unit</th>
+              <th>Amount</th>
+              <th>Delivery Date</th>
+              <th style="text-align: center;">Merchandise value</th>
+              <!-- Add other table headers as needed -->
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let detail of order.orderDetails">
+              <td>
+              
+              <div class="item-group">
+                <img src="{{detail.picturePath}}" alt="Item Image" class="item-image">
+                <div class="item-details">
+                  <div class="name"><strong>{{ detail.name }} [{{detail.productId}}]</strong></div>
+                  <div class="number">#{{ detail.number }}</div>
+                 
+                </div>
+              </div>
+            </td>
+            <td>{{ detail.basePrice}}<br>per {{ detail.baseUnit}}</td> 
+            <td>{{ detail.sellingUnit}} ({{ detail.ratio1}} {{ detail.baseUnit}})<br>{{ detail.sellingPrice}}</td> 
+              <td style="max-width: 140px;"> 
+              
+                <div class="quantity-input input-group" style="max-width: 140px;" >
+                  <button class="quantity-btn btn btn-outline-secondary" (click)="decrementQuantity(detail)"  [disabled]="isProcessing">-</button>
+                  <input type="tel" class="form-control quantity-text" maxlength="4" [disabled]="isProcessing"  [(ngModel)]="detail.quantity" (ngModelChange)="calculateTotalOrderPrice()"  (keypress)="onKeyPress($event)"  />
+                  <button class="quantity-btn btn btn-outline-secondary" [disabled]="isProcessing" (click)="incrementQuantity(detail)">+</button>
+                </div>
+              </td>
+               
+              <td>
+                <mat-form-field style="max-width: 80px; text-align: center;">
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="detail.deliveryDate" [disabled]="isProcessing">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </td>
+              <td style="text-align: center;font-weight: bold;"> {{ detail.sellingPrice * detail.quantity | number: '1.2-2' }}</td> 
+              <!-- Add other table cells as needed -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  <!-- Total Price -->
+  <div class="card mt-4">
+    <div class="card-body d-flex justify-content-end"> <!-- Align to the right -->
+      <h5 class="card-title"><strong>Merchandise value (net) : </strong> {{ totalOrderPrice | number: '1.2-2'  }} CHF</h5>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+<div class="mt-4 d-flex justify-content-end">
+    <!-- <button class="btn btn-primary me-2" (click)="saveOrder()" style="min-width: 136.5px;"  [disabled]="isProcessing">Save</button> -->
+    <button class="btn btn-primary me-2" (click)="openDeleteConfirmation()" style="min-width: 136.5px;" [disabled]="!isConnectedToHogashop || isProcessing">Send Order</button>
+    <!-- <button mat-button (click)="testmessage()">Delete</button> -->
+
+    <!-- <button class="btn btn-primary" style="min-width: 136.5px;" [disabled]="!isConnectedToHogashop || isProcessing">Add to Basket Only</button> -->
+</div>
+</div>
+
+
+<!-- HOGASHOP BASKET VIEW BEFORE CONFIRMING THE SENDING OF ORDER -->
+
+<!-- HOGASHOP BASKET VIEW BEFORE CONFIRMING THE SENDING OF ORDER -->
+
+  <div class="container text-center" *ngIf="isLoading">
+    <!-- Loading indicator -->
+    <p>Loading...</p>
+  </div>
+
+    <!-- Order Not Found Message -->
+    <div class="text-center" *ngIf="!isLoading && isError">
+        <p>Order not found.</p>
+    </div>
+  
+
+    <div *ngIf="isProcessing" class="saving-box">
+      <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden"></span>
+      </div>
+      <p class="text-primary">{{processingMessage}}</p>
+  </div>
+
+ 
+  
+  

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Data\PROJECT\OrderingInterface\OrderingAPI\bin\Release\net3.1</_PublishTargetUrl>
+    <History>True|2024-04-25T06:23:57.7432942Z;True|2024-03-12T12:07:16.2406144+08:00;True|2024-03-12T09:23:15.3420603+08:00;True|2024-03-12T09:16:27.9928927+08:00;True|2024-02-27T15:20:54.3584378+08:00;True|2024-02-07T16:37:00.8989066+08:00;True|2024-02-07T16:17:30.9230818+08:00;True|2024-02-07T16:15:58.9450493+08:00;True|2024-02-07T16:13:17.5297149+08:00;False|2024-02-07T16:12:57.3871928+08:00;True|2024-02-07T15:59:27.2001396+08:00;True|2024-02-07T15:48:40.1699412+08:00;True|2024-02-07T15:42:28.7395886+08:00;</History>
+  </PropertyGroup>
+</Project>

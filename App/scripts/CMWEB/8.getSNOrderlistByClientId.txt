@@ -1,0 +1,21 @@
+
+ALTER PROCEDURE [dbo].[getSNOrderlistByClientId]
+(@ClientId int=-1)
+
+as
+
+
+select 
+ Id
+ ,Name
+,SupplierType
+,ClientId
+,CodeUser
+,DateCreated
+,ModifiedDate
+,DatePosted
+,DeliveryDate
+,Terms
+,Note
+,case when Status =1 then 'Pending' else 'Posted' end Status
+from egswSNOrder

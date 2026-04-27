@@ -1,0 +1,23 @@
+
+
+CREATE TABLE [dbo].[egswSNOrder](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](250) NULL,
+	[SupplierType] [int] NULL,
+	[ClientId] [int] NULL,
+	[Codeuser] [int] NULL,
+	[DateCreated] [datetime] NULL,
+	[ModifiedDate] [datetime] NULL,
+	[DatePosted] [datetime] NULL,
+	[DeliveryDate] [datetime] NULL,
+	[Terms] [nvarchar](300) NULL,
+	[Note] [nvarchar](2500) NULL,
+	[Status] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+

@@ -1,0 +1,30 @@
+<!-- delete-confirmation.component.html
+
+<h2 mat-dialog-title>Delete Confirmation</h2>
+
+<mat-dialog-content>
+  <p>Are you sure you want to delete?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Yes</button>
+</mat-dialog-actions>
+
+ -->
+
+ <div class="card">
+  <div class="card-header">
+
+    <h5 class="card-title">Confirmation</h5>
+  </div>
+  <div class="card-body">
+    <p>Before sending the order to Hogashop, the item in the current basket will be <span style="font-weight: bold;color: darkred;"> deleted</span>. 
+      Would you like to continue?</p>
+  </div>
+  <div class="card-footer d-flex justify-content-end">
+    <button type="button" class="btn btn-danger me-2" style="min-width: 136.5px;" (click)="onNoClick()">No</button>
+    <button type="button" class="btn btn-primary" style="min-width: 136.5px;" (click)="onSuccessClick()">Yes</button>
+  </div>
+</div>
+
+  
