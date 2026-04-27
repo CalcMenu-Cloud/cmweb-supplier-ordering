@@ -1,0 +1,22 @@
+# 1️⃣ Navigate to your project folder
+cd "C:\Data\PROJECT\GIT_PROJECT\CMUniversal_Web"
+
+# 2️⃣ Initialize Git if not already
+git init
+
+# 3️⃣ Add the GitHub remote repository
+git remote add origin https://github.com/CalcMenu-Cloud/foodlabel-app-web.git
+# If remote exists, use:
+# git remote set-url origin https://github.com/CalcMenu-Cloud/foodlabel-app-web.git
+
+# 4️⃣ Add all project files to Git
+git add .
+
+# 5️⃣ Commit the files
+git commit -m "Initial commit from CMUniversal_Web"
+
+# 6️⃣ Rename branch to main (GitHub default)
+git branch -M main
+
+# 7️⃣ Push to GitHub
+git push -u origin main
